@@ -2,6 +2,7 @@ package com.pinyougou.manager.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.pinyougou.pojo.TbBrand;
 import com.pinyougou.sellergoods.service.BrandService;
 import entity.PageResult;
@@ -20,9 +21,11 @@ public class BrandController {
     private BrandService brandService;
 
     @RequestMapping("/findAll")
-    public List<TbBrand> findAll() {
-        List<TbBrand> tbBrandList = brandService.findAll();
-        return tbBrandList;
+//    public List<TbBrand> findAll() {
+    public PageInfo<TbBrand> findAll() {
+//        List<TbBrand> tbBrandList = brandService.findAll();
+        PageInfo<TbBrand> pageInfo = brandService.findAll();
+        return pageInfo;
     }
 
     @RequestMapping("/findPage")  //@RequestBody(required = false)括号内的作用是可以不传入对象

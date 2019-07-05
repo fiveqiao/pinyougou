@@ -3,6 +3,7 @@ package com.pinyougou.sellergoods.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pinyougou.mapper.TbBrandMapper;
 import com.pinyougou.pojo.TbBrand;
 import com.pinyougou.pojo.TbBrandExample;
@@ -20,8 +21,12 @@ public class BrandServiceImpl implements BrandService {
     private TbBrandMapper tbBrandMapper;
 
     @Override
-    public List<TbBrand> findAll() {
-        return tbBrandMapper.selectByExample(null);
+    public PageInfo<TbBrand> findAll() {
+        PageHelper.startPage(1,10);
+
+        List<TbBrand> tbBrandList = tbBrandMapper.selectByExample(null);
+        PageInfo<TbBrand> pageInfo = new PageInfo<TbBrand>(tbBrandList);
+        return pageInfo;
     }
 
     @Override
@@ -42,8 +47,6 @@ public class BrandServiceImpl implements BrandService {
         }
         Page<TbBrand> page = (Page<TbBrand>) tbBrandMapper.selectByExample(example);
 
-/*        List<TbBrand> tbBrandList = tbBrandMapper.selectByExample(null);
-        PageInfo<TbBrand> pageInfo = new PageInfo<TbBrand>(tbBrandList);*/
         return new PageResult(page.getTotal(), page.getResult());
     }
 
