@@ -1,5 +1,5 @@
  //控制层 
-app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemplateService){	
+app.controller('typeTemplateController' ,function($scope,$controller,typeTemplateService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	

@@ -20,7 +20,6 @@ app.controller("baseController", function ($scope) {
 
     //刷新列表
     $scope.reloadList = function () {
-        $scope.selectIds = [];
         //切换页码
         $scope.search($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
     };

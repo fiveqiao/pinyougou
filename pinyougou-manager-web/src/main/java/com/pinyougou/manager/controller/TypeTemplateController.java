@@ -107,7 +107,7 @@ public class TypeTemplateController {
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult search(@RequestBody TbTypeTemplate typeTemplate, int page, int rows  ){
+	public PageResult search(@RequestBody(required = false) TbTypeTemplate typeTemplate, int page, int rows  ){
 		return typeTemplateService.findPage(typeTemplate, page, rows);		
 	}
 	

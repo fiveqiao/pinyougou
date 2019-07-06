@@ -14,8 +14,8 @@
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
 
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
     <!--分页组件开始-->
     <script src="../plugins/angularjs/pagination.js"></script>
     <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
@@ -47,7 +47,7 @@
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
                             data-target="#editModal" ng-click="entity={specificationOptionList:[]}"><i class="fa fa-file-o"></i> 新建
                     </button>
-                    <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+                    <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>
 
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i
                             class="fa fa-refresh"></i> 刷新
@@ -57,8 +57,8 @@
         </div>
         <div class="box-tools pull-right">
             <div class="has-feedback">
-                规格名称：<input>
-                <button class="btn btn-default">查询</button>
+                规格名称：<input ng-model="searchEntity.specName">
+                <button class="btn btn-default" ng-click="reloadList()">查询</button>
             </div>
         </div>
         <!--工具栏/-->
@@ -76,7 +76,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="entity in list">
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
                 <td>{{entity.id}}</td>
                 <td>{{entity.specName}}</td>
                 <td class="text-center">

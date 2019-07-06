@@ -53,7 +53,7 @@ app.controller("brandController", function ($scope, $controller, brandService) {
     //新增
     $scope.save = function () {
         var object = null;
-        if ($scope.entity.id != null) {
+        if ($scope.entity.id == null) {
             object = brandService.add($scope.entity);
         } else {
             object = brandService.update($scope.entity);
@@ -102,7 +102,7 @@ app.controller("brandController", function ($scope, $controller, brandService) {
     $scope.dele = function () {
         if ($scope.selectIds.length > 0) {
             if (confirm("您确定要删除吗？")) {
-                brandService.dele(selectIds).success(
+                brandService.dele($scope.selectIds).success(
                     function (response) {
                         if (response.success) {
                             $scope.selectIds = [];

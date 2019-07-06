@@ -74,8 +74,26 @@ public class SpecificationServiceImpl implements SpecificationService {
      * 修改
      */
     @Override
-    public void update(TbSpecification specification) {
-        specificationMapper.updateByPrimaryKey(specification);
+    public void update(Specification specification) {
+        //获取规格实体
+        TbSpecification tbSpecification = specification.getSpecification();
+        specificationMapper.updateByPrimaryKey(tbSpecification);
+
+        //删除原来规格对应的规格选项
+        //首先创建条件
+        TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+        TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+        criteria.andSpecIdEqualTo(tbSpecification.getId());
+        specificationOptionMapper.deleteByExample(example);
+
+        //获取规格选项集合
+        List<TbSpecificationOption> specificationOptionList = specification.getSpecificationOptionList();
+        for (TbSpecificationOption option : specificationOptionList) {
+            //设置规格Id
+            option.setSpecId(tbSpecification.getId());
+            //新增规格
+            specificationOptionMapper.insert(option);
+        }
     }
 
     /**
@@ -107,7 +125,15 @@ public class SpecificationServiceImpl implements SpecificationService {
     @Override
     public void delete(Long[] ids) {
         for (Long id : ids) {
+            //删除表规格数据
             specificationMapper.deleteByPrimaryKey(id);
+
+            //删除规格选项表数据
+            //创建条件类，用于添加规格ID，就是属性specId
+            TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+            TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+            criteria.andSpecIdEqualTo(id);
+            specificationOptionMapper.deleteByExample(example);
         }
     }
 
