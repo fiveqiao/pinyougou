@@ -5,6 +5,7 @@ import com.pinyougou.pojo.TbTypeTemplateExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TbTypeTemplateMapper {
     int countByExample(TbTypeTemplateExample example);
@@ -28,4 +29,5 @@ public interface TbTypeTemplateMapper {
     int updateByPrimaryKeySelective(TbTypeTemplate record);
 
     int updateByPrimaryKey(TbTypeTemplate record);
+
 }

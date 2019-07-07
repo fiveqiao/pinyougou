@@ -65,6 +65,10 @@
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.8" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.1.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.1.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.1.0.RELEASE" level="project" />
     <orderEntry type="module" module-name="pinyougou-pojo" />
     <orderEntry type="module" module-name="pinyougou-sellergoods-interface" />
   </component>

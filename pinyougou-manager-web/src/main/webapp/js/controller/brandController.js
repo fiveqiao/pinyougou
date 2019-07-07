@@ -1,6 +1,7 @@
 //定义controller
 app.controller("brandController", function ($scope, $controller, brandService) {
 
+    //继承，其实这里是伪继承
     $controller("baseController",{$scope:$scope})
 
     //查询品牌列表

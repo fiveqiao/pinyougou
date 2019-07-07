@@ -56,8 +56,8 @@
         </div>
         <div class="box-tools pull-right">
             <div class="has-feedback">
-                品牌名称:<input ng-model="searchEntity.name">
-                品牌首字母:<input ng-model="searchEntity.firstChar">
+                品牌名称:<input ng-model="searchEntity.name" ng-keyup="enterEvent($event)">
+                品牌首字母:<input ng-model="searchEntity.firstChar" ng-keyup="enterEvent($event)">
                 <button class="btn btn-default" ng-click="reloadList()">查询</button>
             </div>
         </div>

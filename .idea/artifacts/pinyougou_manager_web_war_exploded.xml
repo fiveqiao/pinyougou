@@ -41,6 +41,10 @@
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.8" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.2" />
           <element id="library" level="project" name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.1.0.RELEASE" />
           <element id="archive" name="pinyougou-pojo-1.0-SNAPSHOT.jar">
             <element id="module-output" name="pinyougou-pojo" />
           </element>

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BrandServiceImpl implements BrandService {
@@ -22,7 +23,7 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public PageInfo<TbBrand> findAll() {
-        PageHelper.startPage(1,10);
+        PageHelper.startPage(1, 10);
 
         List<TbBrand> tbBrandList = tbBrandMapper.selectByExample(null);
         PageInfo<TbBrand> pageInfo = new PageInfo<TbBrand>(tbBrandList);
@@ -71,4 +72,10 @@ public class BrandServiceImpl implements BrandService {
             tbBrandMapper.deleteByPrimaryKey(id);
         }
     }
+
+    @Override
+    public List<Map> selectOptionList() {
+        return tbBrandMapper.selectOptionList();
+    }
+
 }

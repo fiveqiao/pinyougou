@@ -1,6 +1,7 @@
 package com.pinyougou.sellergoods.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.pinyougou.mapper.TbSpecificationOptionMapper;
 import com.pinyougou.pojo.TbSpecificationOption;
@@ -84,6 +85,7 @@ public class SpecificationServiceImpl implements SpecificationService {
         TbSpecificationOptionExample example = new TbSpecificationOptionExample();
         TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
         criteria.andSpecIdEqualTo(tbSpecification.getId());
+        //删除对应的规格
         specificationOptionMapper.deleteByExample(example);
 
         //获取规格选项集合
@@ -156,4 +158,8 @@ public class SpecificationServiceImpl implements SpecificationService {
         return new PageResult(page.getTotal(), page.getResult());
     }
 
+    @Override
+    public List<Map> selectOptionList() {
+        return specificationMapper.selectOptionList();
+    }
 }

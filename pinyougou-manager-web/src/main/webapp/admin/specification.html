@@ -57,7 +57,7 @@
         </div>
         <div class="box-tools pull-right">
             <div class="has-feedback">
-                规格名称：<input ng-model="searchEntity.specName">
+                规格名称：<input ng-model="searchEntity.specName" ng-keyup="enterEvent($event)">
                 <button class="btn btn-default" ng-click="reloadList()">查询</button>
             </div>
         </div>
