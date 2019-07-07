@@ -21,6 +21,7 @@ import entity.PageResult;
 @Service
 public class SellerServiceImpl implements SellerService {
 
+
 	@Autowired
 	private TbSellerMapper sellerMapper;
 	
@@ -164,5 +165,11 @@ public class SellerServiceImpl implements SellerService {
 		Page<TbSeller> page= (Page<TbSeller>)sellerMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+	@Override
+	public void updateStatus(String sellerId, String status) {
+		TbSeller tbSeller = sellerMapper.selectByPrimaryKey(sellerId);
+		tbSeller.setStatus(status);
+		sellerMapper.updateByPrimaryKey(tbSeller);
+	}
 }

@@ -16,6 +16,7 @@
 		<!-- 当前用户必须有ROLE_USER的角色 才可以访问根目录及所属子目录的资源 -->
 		<intercept-url pattern="/**" access="ROLE_ADMIN"/>
 		<!-- 开启表单登陆功能 -->
+		<!--always-use-default-target="true" 开启别的页面进入登陆后还是访问的默认页面-->
 		<form-login  login-page="/login.html" default-target-url="/admin/index.html" authentication-failure-url="/login.html" always-use-default-target="true"/>
 		<csrf disabled="true"/>
 		<headers>
@@ -33,5 +34,7 @@
 			</user-service>
 		</authentication-provider>	
 	</authentication-manager>
+
+
 		
 </beans:beans>
