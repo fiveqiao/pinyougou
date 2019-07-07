@@ -6,6 +6,7 @@ import com.pinyougou.sellergoods.service.SellerService;
 import entity.PageResult;
 import entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -125,14 +126,4 @@ public class SellerController {
         return sellerService.findPage(seller, page, rows);
     }
 
-    @RequestMapping("/updateStatus")
-    public Result updateStatus(String sellerId, String status) {
-        try {
-            sellerService.updateStatus(sellerId,status);
-            return new Result(true,"成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Result(false,"失败");
-        }
-    }
 }

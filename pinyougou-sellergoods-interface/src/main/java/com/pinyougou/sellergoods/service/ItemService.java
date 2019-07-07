@@ -2,6 +2,7 @@ package com.pinyougou.sellergoods.service;
 import java.util.List;
 import com.pinyougou.pojo.TbItem;
 
+import com.pinyougou.pojo.TbItemCat;
 import entity.PageResult;
 /**
  * 服务层接口
@@ -57,5 +58,6 @@ public interface ItemService {
 	 * @return
 	 */
 	public PageResult findPage(TbItem item, int pageNum, int pageSize);
-	
+
+
 }
