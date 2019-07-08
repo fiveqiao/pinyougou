@@ -118,4 +118,6 @@ app.controller('typeTemplateController', function ($scope, $controller, typeTemp
     $scope.deleTableRow = function (index) {
         $scope.entity.customAttributeItems.splice(index, 1);
     }
+
+
 });	

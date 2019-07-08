@@ -1,5 +1,7 @@
 package com.pinyougou.sellergoods.service.impl;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -106,4 +108,13 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
+	@Override
+	public List<Map> selectTypeList() {
+		return typeTemplateMapper.selectTypeList();
+	}
+
+    @Override
+    public List<Map> selectType(Long id) {
+        return typeTemplateMapper.selectType(id);
+    }
 }

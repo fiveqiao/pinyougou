@@ -60,5 +60,8 @@ public interface TypeTemplateService {
 	 */
 	public PageResult findPage(TbTypeTemplate typeTemplate, int pageNum, int pageSize);
 
+	List<Map> selectTypeList();
+
+	List<Map> selectType(Long id);
 
 }

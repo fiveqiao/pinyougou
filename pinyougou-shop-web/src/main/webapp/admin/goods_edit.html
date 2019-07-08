@@ -20,14 +20,23 @@
 	<link rel="stylesheet" href="../plugins/kindeditor/themes/default/default.css" />
 	<script charset="utf-8" src="../plugins/kindeditor/kindeditor-min.js"></script>
 	<script charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>
-    
-    
-      
-    
+
+
+	<script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+
+	<!--引入自定义模块-->
+	<script type="text/javascript" src="../js/base.js"></script>
+	<!--引入自定义品牌服务-->
+	<script type="text/javascript" src="../js/service/goodsService.js"></script>
+	<script type="text/javascript" src="../js/service/uploadService.js"></script>
+	<!--引入自定义的controller-->
+	<script type="text/javascript" src="../js/controller/baseController.js"></script>
+	<script type="text/javascript" src="../js/controller/goodsController.js"></script>
+
     
 </head>
 
-<body class="hold-transition skin-red sidebar-mini" >
+<body class="hold-transition skin-red sidebar-mini" ng-app="pinyougou" ng-controller="goodsController">
 
             <!-- 正文区域 -->
             <section class="content">
@@ -86,7 +95,7 @@
 									
 		                           <div class="col-md-2 title">商品名称</div>
 		                           <div class="col-md-10 data">
-		                               <input type="text" class="form-control"    placeholder="商品名称" value="">
+		                               <input type="text" class="form-control" ng-model="entity.goods.goodsName"  placeholder="商品名称" value="">
 		                           </div>
 		                           
 		                           <div class="col-md-2 title">品牌</div>
@@ -96,14 +105,14 @@
 		
 								   <div class="col-md-2 title">副标题</div>
 		                           <div class="col-md-10 data">
-		                               <input type="text" class="form-control"   placeholder="副标题" value="">
+		                               <input type="text" class="form-control" ng-model="entity.goods.caption"  placeholder="副标题" value="">
 		                           </div>
 		                           
 		                           <div class="col-md-2 title">价格</div>
 		                           <div class="col-md-10 data">
 		                           	   <div class="input-group">
 			                          	   <span class="input-group-addon">¥</span>
-			                               <input type="text" class="form-control"  placeholder="价格" value="">
+			                               <input type="text" class="form-control" ng-model="entity.goods.price" placeholder="价格" value="">
 		                           	   </div>
 		                           </div>
 		                           
@@ -115,12 +124,12 @@
 		                           <div class="col-md-2 title rowHeight2x">包装列表</div>
 		                           <div class="col-md-10 data rowHeight2x">
 		                               
-		                           	<textarea rows="4"  class="form-control"   placeholder="包装列表"></textarea>
+		                           	<textarea rows="4"  class="form-control" ng-model="entity.goodsDesc.packageList"  placeholder="包装列表"></textarea>
 		                           </div>
 		                           
 		                           <div class="col-md-2 title rowHeight2x">售后服务</div>
 		                           <div class="col-md-10 data rowHeight2x">
-		                               <textarea rows="4"  class="form-control"    placeholder="售后服务"></textarea>
+		                               <textarea rows="4"  class="form-control"  ng-model="entity.goodsDesc.saleService"  placeholder="售后服务"></textarea>
 		                           </div>                        
                                   
                                     
@@ -132,7 +141,7 @@
                                 <div class="row data-type">                                  
 								 <!-- 颜色图片 -->
 								 <div class="btn-group">
-					                 <button type="button" class="btn btn-default" title="新建" data-target="#uploadModal"  data-toggle="modal"  ><i class="fa fa-file-o"></i> 新建</button>
+					                 <button type="button" class="btn btn-default" title="新建" data-target="#uploadModal" ng-click="image_entity={}"  data-toggle="modal"  ><i class="fa fa-file-o"></i> 新建</button>
                              		                 
 					             </div>
 								 
@@ -145,12 +154,12 @@
 												<th class="sorting">操作</th>
 							            </thead>
 					                    <tbody>
-					                      <tr>					                           
+					                      <tr ng-repeat="pojo in entity.goodsDesc.itemImages">
 									            <td>
-									            	
+									            	{{pojo.color}}
 									            </td>
 									            <td>
-									           		<img alt="" src="" width="100px" height="100px">	            	 
+									           		<img alt="" src="{{pojo.url}}" width="100px" height="100px">
 									            </td>
 												 <td> <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button></td> 
 					                      </tr>
@@ -342,7 +351,7 @@
                  	
                    </div>
                   <div class="btn-toolbar list-toolbar">
-				      <button class="btn btn-primary" ><i class="fa fa-save"></i>保存</button>
+				      <button class="btn btn-primary" ng-click="add()"><i class="fa fa-save"></i>保存</button>
 				      <button class="btn btn-default" >返回列表</button>
 				  </div>
 			
@@ -362,7 +371,7 @@
 			<table class="table table-bordered table-striped">
 		      	<tr>
 		      		<td>颜色</td>
-		      		<td><input  class="form-control" placeholder="颜色" >  </td>
+		      		<td><input  class="form-control" placeholder="颜色" ng-model="image_entity.color">  </td>
 		      	</tr>			    
 		      	<tr>
 		      		<td>商品图片</td>
@@ -371,12 +380,12 @@
 							<tr>
 								<td>
 								<input type="file" id="file" />				                
-					                <button class="btn btn-primary" type="button" >
+					                <button class="btn btn-primary" type="button" ng-click="uploadFile()" >
 				                   		上传
 					                </button>	
 					            </td>
 								<td>
-									<img  src="" width="200px" height="200px">
+									<img  src="{{image_entity.url}}" width="200px" height="200px">
 								</td>
 							</tr>						
 						</table>
@@ -386,7 +395,7 @@
 			
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success"  data-dismiss="modal" aria-hidden="true">保存</button>
+			<button class="btn btn-success"  data-dismiss="modal" aria-hidden="true" ng-click="add_image_entity()">保存</button>
 			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
 		</div>
 	  </div>

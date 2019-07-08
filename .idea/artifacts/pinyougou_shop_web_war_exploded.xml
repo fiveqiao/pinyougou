@@ -48,6 +48,12 @@
           </element>
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.0.0" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
+          <element id="archive" name="pinyougou-common-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="pinyougou-common" />
+          </element>
+          <element id="library" level="project" name="Maven: org.csource.fastdfs:fastdfs:1.2" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

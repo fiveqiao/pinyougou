@@ -28,5 +28,12 @@ app.service('typeTemplateService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('../typeTemplate/search.do?page='+page+"&rows="+rows, searchEntity);
-	}    	
+	}
+	//查询分类名称
+	this.selectTypeList=function () {
+		return $http.get("../typeTemplate/selectTypeList.do");
+    }
+    this.selectType=function (id) {
+        return $http.get("../typeTemplate/selectType.do?id=" + id);
+    }
 });

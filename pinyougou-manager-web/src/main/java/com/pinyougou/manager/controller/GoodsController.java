@@ -46,7 +46,7 @@ public class GoodsController {
 	 * @param goods
 	 * @return
 	 */
-	@RequestMapping("/add")
+/*	@RequestMapping("/add")
 	public Result add(@RequestBody TbGoods goods){
 		try {
 			goodsService.add(goods);
@@ -55,7 +55,7 @@ public class GoodsController {
 			e.printStackTrace();
 			return new Result(false, "增加失败");
 		}
-	}
+	}*/
 	
 	/**
 	 * 修改
