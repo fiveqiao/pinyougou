@@ -60,8 +60,13 @@ public interface TypeTemplateService {
 	 */
 	public PageResult findPage(TbTypeTemplate typeTemplate, int pageNum, int pageSize);
 
+	//查询所有类型
 	List<Map> selectTypeList();
 
+	//根据类型id查找
 	List<Map> selectType(Long id);
+
+	//根据类型id查找, 并根据specIds的字段内id去查找对应的规格
+	List<Map> findSpecList(Long id);
 
 }

@@ -66,4 +66,5 @@ app.controller("baseController", function ($scope) {
             $scope.reloadList();
         }
     }
+
 });

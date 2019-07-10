@@ -66,4 +66,15 @@ app.controller("baseController", function ($scope) {
             $scope.reloadList();
         }
     }
+
+
+    //在list集合中根据某key的值查询对象
+    $scope.searchObjectBykey = function (list,key,keyValue) {
+        for(var i = 0; i < list.length; i++){
+            if(list[i][key] == keyValue){
+                return list[i];
+            }
+        }
+        return null;
+    }
 });

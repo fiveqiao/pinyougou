@@ -36,10 +36,13 @@ app.controller('itemCatController', function ($scope, $controller, itemCatServic
     $scope.save = function () {
         var serviceObject;//服务层对象
         if ($scope.entity.id != null) {//如果有ID
+            //赋予类型ID
+            $scope.entity.typeId = $scope.entity.typeId["id"];
             serviceObject = itemCatService.update($scope.entity); //修改
         } else {
             //赋予上级 ID
             $scope.entity.parentId = $scope.parentId;
+            //赋予类型ID
             $scope.entity.typeId = $scope.entity.typeId["id"];
             serviceObject = itemCatService.add($scope.entity);//增加
         }
@@ -153,7 +156,9 @@ app.controller('itemCatController', function ($scope, $controller, itemCatServic
     $scope.selectTypeList = function () {
         typeTemplateService.selectTypeList().success(
             function (response) {
-                $scope.typeList = {data: response}
+                $scope.typeList = {data: response};
+                //定义个变量，用于接收所有类型集合，[{"id":32,"text":"ada"},....{}] 这种格式
+                $scope.type = response;
             }
         )
     }
