@@ -12,18 +12,20 @@ import entity.PageResult;
 import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class BrandServiceImpl implements BrandService {
     @Autowired
     private TbBrandMapper tbBrandMapper;
 
     @Override
     public PageInfo<TbBrand> findAll() {
-        PageHelper.startPage(1, 10);
+        PageHelper.startPage(1, 100);
 
         List<TbBrand> tbBrandList = tbBrandMapper.selectByExample(null);
         PageInfo<TbBrand> pageInfo = new PageInfo<TbBrand>(tbBrandList);
