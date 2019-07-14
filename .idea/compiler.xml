@@ -13,9 +13,13 @@
         <module name="pinyougou-manager-web" />
         <module name="pinyougou-pojo" />
         <module name="pinyougou-portal-web" />
+        <module name="pinyougou-search-interface" />
+        <module name="pinyougou-search-service" />
+        <module name="pinyougou-search-web" />
         <module name="pinyougou-sellergoods-interface" />
         <module name="pinyougou-sellergoods-service" />
         <module name="pinyougou-shop-web" />
+        <module name="pinyougou-solr-util" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,10 +31,14 @@
       <module name="pinyougou-parent" target="1.8" />
       <module name="pinyougou-pojo" target="1.8" />
       <module name="pinyougou-portal-web" target="1.8" />
+      <module name="pinyougou-search-interface" target="1.8" />
+      <module name="pinyougou-search-service" target="1.8" />
+      <module name="pinyougou-search-web" target="1.8" />
       <module name="pinyougou-sellergoods-interface" target="1.8" />
       <module name="pinyougou-sellergoods-service" target="1.8" />
       <module name="pinyougou-service" target="1.8" />
       <module name="pinyougou-shop-web" target="1.8" />
+      <module name="pinyougou-solr-util" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

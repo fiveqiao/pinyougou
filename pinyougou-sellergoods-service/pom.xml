@@ -14,6 +14,7 @@
 
     <dependencies>
 
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -81,7 +82,11 @@
             <artifactId>servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <!--分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
         <!--引入pinyougou-sellergoods-interface依赖-->
         <!--引入pinyougou-dao依赖-->
         <dependency>
@@ -94,12 +99,7 @@
             <artifactId>pinyougou-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <!--<version>5.1.2</version>-->
-            <!--<version>5.1.2</version>-->
-        </dependency>
+
     </dependencies>
 
     <build>
