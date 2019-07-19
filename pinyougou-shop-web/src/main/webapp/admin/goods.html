@@ -51,7 +51,7 @@
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
 										<a href="goods_edit.html#?id={{entity.id}}" class="btn btn-default" title="新建">新建</a>
-                                        <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+                                        <button type="button" class="btn btn-default" title="删除" ng-click="dele()" ><i class="fa fa-trash-o"></i> 删除</button>
                                         <button type="button" class="btn btn-default" title="提交审核" ><i class="fa fa-check"></i> 提交审核</button>
                                         <button type="button" class="btn btn-default" title="上架" ng-if="searchEntity.auditStatus=='1'" ng-click="updateIsMarketable(1)"><i class="fa fa-check"></i> 上架</button>
                                         <button type="button" class="btn btn-default" title="下架" ng-if="searchEntity.auditStatus=='1'" ng-click="updateIsMarketable(0)"><i class="fa fa-check"></i> 下架</button>

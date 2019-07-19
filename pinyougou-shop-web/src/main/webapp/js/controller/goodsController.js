@@ -106,15 +106,24 @@ app.controller('goodsController', function ($scope, $controller, $location, good
 
     //批量删除
     $scope.dele = function () {
-        //获取选中的复选框
-        goodsService.dele($scope.selectIds).success(
-            function (response) {
-                if (response.success) {
-                    $scope.reloadList();//刷新列表
-                    $scope.selectIds = [];
-                }
+        if ($scope.selectIds.length > 0) {
+            if (confirm("确定此操作吗？")) {
+                //获取选中的复选框
+                goodsService.dele($scope.selectIds).success(
+                    function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            $scope.reloadList();//刷新列表
+                            $scope.selectIds = [];
+                        }else {
+                            alert(response.message);
+                        }
+                    }
+                );
             }
-        );
+        }else {
+            alert("您还没有选择！");
+        }
     }
 
     $scope.searchEntity = {};//定义搜索对象
@@ -291,7 +300,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
 
     $scope.status = ["未审核", "已审核", "审核未通过", "已关闭"];
 
-    $scope.isMarketable = ["未上架","已上架"];
+    $scope.isMarketable = ["未上架", "已上架"];
 
     //查询商品分类列表
     $scope.itemCatList = [];
@@ -321,11 +330,11 @@ app.controller('goodsController', function ($scope, $controller, $location, good
     }
     $scope.$watch("searchEntity.auditStatus", function (newValue, oldValue) {
         $scope.reloadList();
-    },true);
+    }, true);
 
     $scope.$watch("searchEntity.isMarketable", function (newValue, oldValue) {
         $scope.reloadList();
-    },true)
+    }, true)
 
 
     //修改上架状态
