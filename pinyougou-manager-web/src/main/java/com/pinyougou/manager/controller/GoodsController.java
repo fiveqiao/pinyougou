@@ -3,10 +3,12 @@ package com.pinyougou.manager.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import com.pinyougou.page.service.ItemPageService;
+import com.alibaba.fastjson.JSON;
 import com.pinyougou.pojo.TbItem;
 import com.pinyougou.pojogroup.Goods;
-import com.pinyougou.search.service.ItemSearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,11 @@ import com.pinyougou.sellergoods.service.GoodsService;
 
 import entity.PageResult;
 import entity.Result;
+
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
 
 /**
  * controller
@@ -29,8 +36,16 @@ public class GoodsController {
 
     @Reference
     private GoodsService goodsService;
-    @Reference(timeout = 100000)
-    private ItemPageService itemPageService;
+
+    @Autowired
+    private Destination queueSolrDestination;//用于发送 solr 导入的消息目标（点对点）
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+
+
+    @Autowired
+    private Destination topicPageDestination;  //用于生成商品详情页的消息目标（发布订阅）
 
     /**
      * 返回全部列表
@@ -108,7 +123,7 @@ public class GoodsController {
     public Result delete(Long[] ids) {
         try {
             goodsService.delete(ids);
-            itemSearchService.deleteByGoodsIds(Arrays.asList(ids));
+//            itemSearchService.deleteByGoodsIds(Arrays.asList(ids));
             return new Result(true, "删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,8 +144,8 @@ public class GoodsController {
         return goodsService.findPage(goods, page, rows);
     }
 
-    @Reference(timeout = 100000)
-    private ItemSearchService itemSearchService;
+/*    @Reference(timeout = 100000)
+    private ItemSearchService itemSearchService;*/
 
     @RequestMapping("/updateStatus")
     public Result updateStatus(Long[] ids, String status) {
@@ -139,20 +154,30 @@ public class GoodsController {
             if ("1".equals(status)) {//审核通过才去查找item信息，并存入solr
                 List<TbItem> itemList = goodsService.findItemListByGoodsIdandStatus(ids, status);
                 if (itemList.size() > 0) {
-                    itemSearchService.importList(itemList);
+//                    itemSearchService.importList(itemList);
+                    String itemListString = JSON.toJSONString(itemList);
+                    jmsTemplate.send(queueSolrDestination, new MessageCreator() {
+                        @Override
+                        public Message createMessage(Session session) throws JMSException {
+                            return session.createTextMessage(itemListString);
+                        }
+                    });
                 } else {
                     System.out.println("没有明细数据");
                 }
                 //静态页生成
                 for (Long goodsId : ids) {
-                    itemPageService.genItemHtml(goodsId);
+//                    itemPageService.genItemHtml(goodsId);
+                    jmsTemplate.send(topicPageDestination, new MessageCreator() {
+                        @Override
+                        public Message createMessage(Session session) throws JMSException {
+                            return session.createTextMessage(goodsId+"");
+                        }
+                    });
                 }
             }
             return new Result(true, "修改成功");
-        } catch (
-                Exception e)
-
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return new Result(false, "修改失败");
         }
@@ -160,13 +185,4 @@ public class GoodsController {
     }
 
 
-    /**
-     * 生成静态页（测试）
-     *
-     * @param goodsId
-     **/
-    @RequestMapping("/genHtml")
-    public void genHtml(Long goodsId) {
-        itemPageService.genItemHtml(goodsId);
-    }
 }

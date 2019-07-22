@@ -23,14 +23,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:5.0.2.RELEASE" />
-          <element id="library" level="project" name="Maven: com.alibaba:dubbo:2.8.4" />
-          <element id="library" level="project" name="Maven: org.apache.zookeeper:zookeeper:3.4.7" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.1" />
-          <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
-          <element id="library" level="project" name="Maven: jline:jline:0.9.94" />
-          <element id="library" level="project" name="Maven: io.netty:netty:3.7.0.Final" />
-          <element id="library" level="project" name="Maven: com.github.sgroschupf:zkclient:0.1" />
           <element id="library" level="project" name="Maven: junit:junit:4.9" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.28" />
@@ -39,6 +31,12 @@
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.23" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.0.0" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-client:5.13.4" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.13" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtbuf:hawtbuf:1.11" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1" />
+          <element id="library" level="project" name="Maven: javax.jms:javax.jms-api:2.0.1" />
           <element id="archive" name="pinyougou-page-interface-1.0-SNAPSHOT.jar">
             <element id="module-output" name="pinyougou-page-interface" />
           </element>
@@ -50,6 +48,8 @@
           <element id="library" level="project" name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.32" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.9" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.6" />
           <element id="archive" name="pinyougou-pojo-1.0-SNAPSHOT.jar">
             <element id="module-output" name="pinyougou-pojo" />
           </element>
@@ -62,6 +62,7 @@
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpmime:4.2.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient-cache:4.2.2" />
           <element id="library" level="project" name="Maven: org.apache.solr:solr-solrj:4.10.3" />
+          <element id="library" level="project" name="Maven: org.apache.zookeeper:zookeeper:3.4.7" />
           <element id="library" level="project" name="Maven: org.codehaus.woodstox:wstx-asl:3.2.7" />
           <element id="library" level="project" name="Maven: org.noggit:noggit:0.5" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.7" />
