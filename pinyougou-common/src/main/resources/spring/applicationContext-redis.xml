@@ -25,9 +25,13 @@
     <bean id="JedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
           p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}" p:pool-config-ref="poolConfig"/>
 
+    <!--redis序列化配置-->
+    <bean id="stringRedisSerializer"
+          class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <!--实现存储序列化，不然redis-cli客户端查不到数据-->
-        <property name="keySerializer">
+<!--        <property name="keySerializer">
             <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
         </property>
         <property name="valueSerializer">
@@ -35,11 +39,12 @@
         </property>
         <property name="hashKeySerializer">
             <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
-        </property>
-        <property name="hashValueSerializer">
-            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
-        </property>
+        </property>-->
+        <property name="valueSerializer" ref="stringRedisSerializer"/>
+        <property name="hashValueSerializer" ref="stringRedisSerializer"/>
 
+        <property name="keySerializer" ref="stringRedisSerializer" />
+        <property name="hashKeySerializer" ref="stringRedisSerializer" />
         <!--redis连接信息配置引用-->
         <property name="connectionFactory" ref="JedisConnectionFactory"/>
     </bean>

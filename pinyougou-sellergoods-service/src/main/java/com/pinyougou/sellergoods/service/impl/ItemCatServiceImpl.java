@@ -116,7 +116,7 @@ public class ItemCatServiceImpl implements ItemCatService {
         List<TbItemCat> catList = findAll();
         for (TbItemCat tbItemCat : catList) {
             //以分类名称作为 key ,以模板 ID 作为值
-            redisTemplate.boundHashOps("itemCat").put(tbItemCat.getName(),tbItemCat.getTypeId());
+            redisTemplate.boundHashOps("itemCat").put(tbItemCat.getName(),tbItemCat.getTypeId().toString());
         }
         System.out.println("更新缓存:商品分类表");
         return itemCatMapper.selectByExample(example);

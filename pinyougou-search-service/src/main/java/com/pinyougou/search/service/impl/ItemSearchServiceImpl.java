@@ -1,6 +1,7 @@
 package com.pinyougou.search.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.pinyougou.pojo.TbItem;
 import com.pinyougou.search.service.ItemSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,15 +107,17 @@ public class ItemSearchServiceImpl implements ItemSearchService {
     public Map<String, Object> searchBrandAndSpecList(String categroy) {
         Map<String, Object> map = new HashMap<String, Object>();
         //获取模板 ID
-        Long typeId = (Long) redisTemplate.boundHashOps("itemCat").get(categroy);
+        String typeId = (String) redisTemplate.boundHashOps("itemCat").get(categroy);
 
         if (typeId != null) {
             //根据模板 ID 查询品牌列表
-            List<Map> brandList = (List<Map>) redisTemplate.boundHashOps("brandList").get(typeId);
+            String brandListString = (String) redisTemplate.boundHashOps("brandList").get(typeId);
+            List<Map> brandList = JSON.parseArray(brandListString, Map.class);
             //返回值添加品牌列表
             map.put("brandList", brandList);
             //根据模板 ID 查询规格列表
-            List<Map> specList = (List<Map>) redisTemplate.boundHashOps("specList").get(typeId);
+            String specListString = (String) redisTemplate.boundHashOps("specList").get(typeId);
+            List<Map> specList = JSON.parseArray(specListString, Map.class);
             map.put("specList", specList);
         }
         return map;
