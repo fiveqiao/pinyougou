@@ -13,6 +13,11 @@
     <!-- 文件上传组件 -->
     <dependencies>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.28</version>
+        </dependency>
+        <dependency>
             <groupId>org.csource.fastdfs</groupId>
             <artifactId>fastdfs</artifactId>
         </dependency>
@@ -31,8 +36,55 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
         </dependency>
-
+        <!--引入 servlet-api 依赖-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--自己的工具类jar包-->
+        <dependency>
+            <groupId>com.tqfive</groupId>
+            <artifactId>tq-util</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+        <!--微信支付接口-->
+        <dependency>
+            <groupId>com.github.wxpay</groupId>
+            <artifactId>wxpay-sdk</artifactId>
+            <version>0.0.3</version>
+        </dependency>
     </dependencies>
+    <!--默认-->
+    <properties>
+        <env>dev</env>
+    </properties>
+    <!--配置多个环境-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <env>pro</env>
+            </properties>
+        </profile>
+    </profiles>
 
+    <build>
+        <filters>
+            <filter>src/main/resources/filters/dubbox_${env}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>

@@ -32,7 +32,7 @@
 
     <!-- 引用dubbo 服务 -->
     <dubbo:application name="pinyougou-shop-web"/>
-    <dubbo:registry address="zookeeper://192.168.25.128:2181" timeout="1000000"/>
+    <!--<dubbo:registry address="zookeeper://192.168.25.128:2181" timeout="1000000"/>-->
     <dubbo:annotation package="com.pinyougou.shop.controller"/>
     <dubbo:consumer id="default-consumers" default="true" check="false" timeout="1000000" retries="0"/>
 

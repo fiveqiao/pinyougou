@@ -19,7 +19,7 @@
     </bean>
 
     <!--这个是队列目的地，发布订阅的  文本信息-->
-    <bean id="topicPageDestination" class="org.apache.activemq.command.ActiveMQQueue">
+    <bean id="topicPageDestination" class="org.apache.activemq.command.ActiveMQTopic">
         <constructor-arg value="pinyougou_topic_page"/>
     </bean>
 

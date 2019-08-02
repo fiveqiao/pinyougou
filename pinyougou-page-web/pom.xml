@@ -11,6 +11,27 @@
     <packaging>war</packaging>
     <artifactId>pinyougou-page-web</artifactId>
 
+    <!--默认-->
+    <properties>
+        <post>9008</post>
+    </properties>
+
+    <!--配置运行端口-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <post>9008</post>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <post>9118</post>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -19,7 +40,7 @@
                 <version>2.2</version>
                 <configuration>
                     <!-- 指定端口 -->
-                    <port>9008</port>
+                    <port>${post}</port>
                     <!-- 请求路径 -->
                     <path>/</path>
                 </configuration>

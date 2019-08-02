@@ -39,6 +39,9 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-redis:1.7.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-keyvalue:1.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: com.tqfive:tq-util:2.0.3" />
+          <element id="library" level="project" name="Maven: com.github.wxpay:wxpay-sdk:0.0.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.21" />
           <element id="archive" name="pinyougou-page-interface-1.0-SNAPSHOT.jar">
             <element id="module-output" name="pinyougou-page-interface" />
           </element>

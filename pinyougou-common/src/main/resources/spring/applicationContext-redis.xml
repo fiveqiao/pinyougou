@@ -31,15 +31,6 @@
 
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <!--实现存储序列化，不然redis-cli客户端查不到数据-->
-<!--        <property name="keySerializer">
-            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
-        </property>
-        <property name="valueSerializer">
-            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
-        </property>
-        <property name="hashKeySerializer">
-            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
-        </property>-->
         <property name="valueSerializer" ref="stringRedisSerializer"/>
         <property name="hashValueSerializer" ref="stringRedisSerializer"/>
 

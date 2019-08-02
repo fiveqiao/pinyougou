@@ -8,7 +8,11 @@ app.controller('userController', function ($scope, userService) {
             $scope.password = "";
             return;
         }
-        userService.add($scope.entity,$scope.smscode).success(function (response) {
+        if ($scope.entity.password == null || $scope.entity.password.length == 0) {
+            alert("密码不能为空!");
+            return;
+        }
+        userService.add($scope.entity, $scope.smscode).success(function (response) {
             alert(response.message);
         });
     }

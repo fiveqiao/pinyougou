@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pinyougou-seckill-web:war">
+    <output-path>$PROJECT_DIR$/pinyougou-seckill-web/target</output-path>
+    <root id="archive" name="pinyougou-seckill-web-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="pinyougou-seckill-web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -10,6 +10,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pinyougou-dao</artifactId>
+    <!--定义 Profile-->
+    <properties>
+        <env>dev</env>
+    </properties>
+    <!--这里我们定义了 2 个 profile，分别是开发环境和生产环境-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <properties>
+                <env>pro</env>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
 
         <dependency>
@@ -73,5 +94,21 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <!--资源过滤与变量替换-->
+        <filters>
+            <filter>src/main/resources/filters/db_${env}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+
+        </resources>
+
+    </build>
 
 </project>

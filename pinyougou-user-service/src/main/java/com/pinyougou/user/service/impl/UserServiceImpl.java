@@ -186,7 +186,7 @@ public class UserServiceImpl implements UserService {
 //        redisTemplate.boundHashOps("smscode").expire(10L, TimeUnit.SECONDS);
 
         //发送到activeMQ
-/*        jmsTemplate.send(smsDestination, new MessageCreator() {
+        jmsTemplate.send(smsDestination, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
                 MapMessage mapMessage = session.createMapMessage();
@@ -199,7 +199,7 @@ public class UserServiceImpl implements UserService {
                 mapMessage.setString("param", JSON.toJSONString(param));
                 return mapMessage;
             }
-        });*/
+        });
         //存入缓存
         redisTemplate.boundHashOps("smscode").put(phone, code);
         //定时执行，实现验证码有效5分钟
